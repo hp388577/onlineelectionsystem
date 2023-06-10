@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+     'Admin_Login',
+    'Candidate_Login',
+    'Election',
+    'User_Login',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +79,12 @@ WSGI_APPLICATION = 'onlineelectionsystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+
+        'NAME':         'onlineelectionsystem',
+        'USER':         'postgres',
+        'PASSWORD':     '320127',
+        'HOST':         'localhost',
     }
 }
 

@@ -1,0 +1,48 @@
+Databse feilds
+For Voter
+id:
+name:
+email:
+userID:
+password:
+area:
+
+For admin
+id:
+name:
+email:
+userid:
+password:
+is superuser=True
+
+for candidate
+temp id:
+if verified:
+name:
+email:
+userid:
+pass:
+area:
+is staff=True
+
+Voter can 
+See details of candidate according to the area
+vote ones per election
+
+
+candidate can 
+upload their details
+get update of their election result
+
+
+admin can
+view and verify details of candidate
+after ferifying detail user id and pass are given to candidate
+delete candidate
+
+
+
+
+Result Calculation module 
+Election Creation module 
+Voting conduction module
