@@ -1,11 +1,13 @@
 Databse feilds
+
+
 For Voter
 id:
 name:
 email:
 userID:
 password:
-area:
+area: drop down liat
 
 For admin
 id:
@@ -15,15 +17,32 @@ userid:
 password:
 is superuser=True
 
+
+temp user
+uploads all the participant data
+token generated
+status : passs or fail
+
+
+
+
 for candidate
-temp id:
+
+temp id:= user id of the 
 if verified:
 name:
 email:
 userid:
 pass:
-area:
 is staff=True
+area name drop down list
+vote counter
+
+in participate form 
+area:
+what kind of election they want to participate=give the list of election which is no done yet
+
+
 
 Voter can 
 See details of candidate according to the area
@@ -41,8 +60,53 @@ after ferifying detail user id and pass are given to candidate
 delete candidate
 
 
+Voting conduction module
+call the election
 
+
+Election Creation module 
+pk election name 
+election description
+election due date for participant to participate 
+election start Date 
+election due Date
+election result anunsment date
+result participant details with their total vote
+is done = decide wheather election is on for participant to participate
+#new table take reference from election table election name as foreign key 
+election name with their availble area 
 
 Result Calculation module 
-Election Creation module 
-Voting conduction module
+
+
+in home view 
+it reload the database every time and update weather the election is done or not
+and also count result after due date
+
+
+
+
+Flow 
+admin comes and anounce the election and thier type and dates
+
+and then participant comes
+it will check the list of election and availble area where the election is going to be happen
+ the data is shown based on the boolean value to is_done
+ it will provide all the details to admin and get one token
+ the data is captured in the temp user data
+
+ admin check the all details and update to pass or fail
+
+ if get pased then 
+ when the participant check the token it get its user id and password
+
+ user came that is voter 
+ it get register and login
+ check the elections 
+ and vote to on going election to participant whose area is matching with user or voter area
+
+
+ the vote counter get updated of the participant
+
+ on the result date the admin count the votes of the participant
+ and anounce the result 

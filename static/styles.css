@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #e4b652;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  form {
+    margin-top: 20px;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin: 20px auto;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f9f9f9; /* Add a background color to make the label visible */
+  }
+  
+  label:hover {
+    border-color: #666;
+  }
+  
+  input[type="file"] {
+    display: none; /* Keep the input hidden */
+  }
+  
+  .button-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #031c7fd1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  
+  button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .button-label:hover {
+    background-color: #45a049;
+  }
+  
+  .button-label:focus {
+    outline: none;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #2073e8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #2073e8;
+  }
+  
+  input[type="submit"]:focus {
+    outline: none;
+  }
+  
+  h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #e17638;
+  margin-bottom: 10px;
+  text-align:center;
+  }
+  
+  h2 {
+  text-align:center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f65f5f;
+  margin-bottom: 8px;
+  }
+  
+  p {
+  font-size: 16px;
+  color: #024371;
+  margin-bottom: 8px;
+  }
+  
+  
+  .button-label {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007bff;
+    align-self: center;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+
+
+/* Styles for the form */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+   /* Styles for the error message */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .search-box {
+    margin-bottom: 10px;
+  }
+  .dropdown-list {
+    width: 200px;
+  }
+  .center-container {
+    display: flex;
+    justify-content: center;
+  }
