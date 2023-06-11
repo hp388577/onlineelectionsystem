@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 def home(request):
 
-    return render(request,'index.html');
+    return render(request,'election_create.html');
 
 def result(request):
     if request.method== 'POST':

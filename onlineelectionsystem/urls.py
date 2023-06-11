@@ -14,15 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib.staticfiles.views import serve
+
+
 from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
     path('users', include('accounts.urls')),
-    path('adminlogin/', include('Admin_Login.urls')),
-    path('candidatelogin', include('Candidate_Login.urls')),
+    path('', include('Admin_Login.urls')),
+    path('', include('Candidate_Login.urls')),
     path('', include('Election.urls')),
-    path('userlogin', include('User_Login.urls')),
+    path('', include('User_Login.urls')),
     
     path('admin/', admin.site.urls),
+    path('static/<path:path>', serve, {'document_root': r'C:\Users\hp388\Projects\onlineelectionsystem\static\css'}),
+
 ]
