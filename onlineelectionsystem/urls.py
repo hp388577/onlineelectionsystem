@@ -15,13 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib.staticfiles.views import serve
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('users', include('accounts.urls')),
+    path('', include('accounts.urls')),
     path('', include('Admin_Login.urls')),
     path('', include('Candidate_Login.urls')),
     path('', include('Election.urls')),
@@ -31,3 +32,6 @@ urlpatterns = [
     path('static/<path:path>', serve, {'document_root': r'C:\Users\hp388\Projects\onlineelectionsystem\static\css'}),
 
 ]
+urlpatterns= urlpatterns + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+
+

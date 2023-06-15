@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>User Profile Form</title>
+  {% extends 'base.html' %}
+  {% block content %}
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -55,28 +57,18 @@
 </head>
 <body>
   <div class="container">
-    <h2>User Profile Form</h2>
-    <form method="POST" action='/profile_create'>
+    <h2>Voter Login Form</h2>
+    <form method="POST" action='userlogin'>
       {% csrf_token %}
 
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" required>
       </div>
 
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="area">Area:</label>
-        <input type="text" id="area" name="area" required>
-      </div>
-
-      <div class="form-group">
-        <label for="eligible_to_vote">Eligible to Vote:</label>
-        <input type="checkbox" id="eligible_to_vote" name="eligible_to_vote">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
       </div>
 
       <input type="submit" class="submit-btn" value="Submit">
@@ -84,3 +76,4 @@
   </div>
 </body>
 </html>
+{% endblock %} 

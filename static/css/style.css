@@ -1,3 +1,8 @@
+.dropdown-menu {
+	display: none;
+  }
+  
+
 article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
 	display:block;
 }

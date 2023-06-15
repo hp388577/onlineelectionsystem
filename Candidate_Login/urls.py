@@ -6,5 +6,6 @@ from . import views
 
 urlpatterns = [
 
-path('candidatelogin',views.home,name='index')
+path('candidateLogin',views.candidateLogin,name='candidateLogin'),
+
 ]

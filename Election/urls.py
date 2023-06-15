@@ -7,5 +7,8 @@ from . import views
 urlpatterns = [
 
 path('election',views.home,name='index'),
-path('check',views.result,name='result')
-]
+path('election_details',views.election_details,name='election_details'),
+path('vote',views.vote,name='vote'),
+
+
+] 

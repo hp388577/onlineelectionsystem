@@ -1,84 +1,173 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Registration</title>
+  
+  {% extends 'base.html' %}
+  {% block content %}
+  <title>Registration</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+  .form-container {
+    width: 400px; /* Adjust the width as needed */
+  }
+</style>
+  
+
 </head>
 <body>
+  {% for message in messages %}
+
+
+  <div class="alert alert-danger" role="alert">
+    message: {{message}}
+  </div>
+  {% endfor %}
+
+{% if not as_candidate %}
+
   <div class="container">
-    <h1>User Registration</h1>
-    <form method="POST" action="/register">
+    <h1>Voter Registration</h1><br><br><ln>
+    
+    <form method="POST" action="/registration_as_voter">
       {% csrf_token %}
       <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input type="text" class="form-control" id="first_name" name="first_name" required>
+        
+        <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Enter your First name here">
       </div>
       <div class="form-group">
-        <label for="last_name">Last Name</label>
-        <input type="text" class="form-control" id="last_name" name="last_name" required>
+        
+        <input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Enter your First name here">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" required>
       </div>
-      <select id="dropdown" class="dropdown-list">
-      </select>
-    
-      <script>
-        // Data for the dropdown list
-        const data =[
-           "Ankampalli B.O  515741",
-       "Anumpalli B.O  515775",
-       "Appecharla B.O  515455",
-       "Appilepalli B.O  515766",
-       "Arakatavemula B.O  515445",
-       "Araveedu B.O  515465",
-       "Aravindanagar S.O  515001",
-       "Atmakur(ATP) S.O  515751",
-       "Avuladatla B.O  515867",
-       "Avulanna B.O  515741",
-       "Aydukallu B.O  515763",
-       "Ayyagarlapalli B.O  515767",
-       "Ayyavaripalli B.O  515775",
-       "Ayyavaripalli B.O  515722",
-       "B.N.Halli B.O  515867",
-       "B.T.Project B.O  515863",
-       "Bandameedapalli B.O  515722",
-       "Bandlapalli B.O  515425",
-       "Basapuram B.O  515766",
-       "Basinepalli B.O  515402",
-       "Bavarampalli B.O  515761",
-       "Belguppa S.O  515741",
-       "Belodu B.O  515867",
-       "Bestharapalli B.O  515766",
-       "Bethapalli B.O  515402",
-       "Bhattuvanipalli B.O  515787" 
-    ];
-    
-        // Populate the dropdown list with the data
-        const dropdown = document.getElementById("dropdown");
-        data.forEach(function(item) {
-          const option = document.createElement("option");
-          option.text = item;
-          dropdown.add(option);
-        });
-    
-    
-      </script>
-      <br>
-        <b><label>Role:</label><b>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="role" id="voter" value="voter" required>
-          <label class="form-check-label" for="voter">Voter</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="role" id="candidate" value="candidate" required>
-          <label class="form-check-label" for="candidate">Candidate</label>
-        </div>
-      
+      <br><br>
+      <br><br>
+      <div class="form-group">
+        <label >Select Area</label>
+        <select name="area" class="form-control" >
+        <option name="vasai">Vasai</option>
+        <option name="nalashopara">Nalashopara</option>
+        <option name="virar">Virar</option>
+        </select>
+       
       <button type="submit" class="btn btn-primary">Register</button>
     </div>
     </form>
   </div>
+ {% endif %}
+ {% if as_candidate %}
+ {% if not is_verified %}
+ <div class="container">
+  <h1>Election Participant Registration</h1>
+  <form  method="POST" action="participantRegister" enctype="multipart/form-data">
+    <!-- Form fields -->
+ 
+ <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="name">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="documents_image">Documents Image</label>
+    <input type="file" class="form-control-file" id="documents_image" name="documents_image" required>
+  </div>
+  <div class="form-group">
+    <label >Select Area</label>
+        <select name="area" class="form-control" >
+        <option name="vasai">Vasai</option>
+        <option name="nalashopara">Nalashopara</option>
+        <option name="virar">Virar</option>
+        </select>
+   
+  <button type="submit" class="btn btn-primary">Register</button>
+  
+  </div>
+
+</form>
+<b>
+If You are already register and you have token <br>
+  check your token status here
+</b>
+<form method="POST" action="/validateToken" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="token">Token</label>
+    <input type="text" class="form-control" id="validateToken" name="validateToken" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Validate Token</button>
+</form>
+
+</div>
+
+{%else%}
+<div class="container">
+  <h1>Election Candidate Registration</h1>
+<form method="POST" action = "registration_as_candidate" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+  <label for="name">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" required>
+  </div>
+  <div class="form-group">
+    <label for="name">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+    
+  <div class="form-group">
+    <label for="documents_image">Documents Image</label>
+    <input type="file" class="form-control-file" id="documents_image" name="documents_image" required>
+    
+    
+  </div>
+  <div class="form-group">
+    <label for="symbol_image">Symbol</label>
+    <input type="file" class="form-control-file" id="symbol_image" name="symbol_image" required>
+  </div>
+  <div class="form-group">
+    <label >Select Area</label>
+        <select name="area" class="form-control" >
+        <option name="vasai">Vasai</option>
+        <option name="nalashopara">Nalashopara</option>
+        <option name="virar">Virar</option>
+        </select>
+   
+  <button type="submit" class="btn btn-primary">Register</button>
+</div>
+</form>
+
+{% endif %}
+
+ {% endif %}
+</form>
+</div>
 </body>
 </html>
+
+{% endblock %} 

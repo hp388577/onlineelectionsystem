@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Election Candidates</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Election Candidates</h1>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Election Name</th>
+          
+          <th scope="col">Election Details</th>
+          <th scope="col">Start Date and Time</th>
+          <th scope="col">End Date and Time</th>
+          <th scope="col">Candidate Name</th>
+          <th scope="col">Area</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in election_data %}
+        
+
+        <tr>
+          <td rowspan="2">{{data.election_name}}</td>
+          
+          <td>{{data.election_description}}</td>
+          <td>{{data.election_start_date}}</td>
+          <td>{{data.area}}</td>
+          {%endfor%}
+          {% for candidates in candidate %}
+          <td>{{candidates.user}}</td>
+          <td>{{candidates.area_name}}</td>
+          {%endfor%}
+        </tr>
+        
+<!--
+        <tr>
+          <td>Jane Smith</td>
+          <td>Area B</td>
+          <td>Lorem ipsum dolor sit amet</td>
+          <td>2023-05-01</td>
+          <td>2023-05-15</td>
+        </tr>
+        <tr>
+          <td>Election 2024</td>
+          <td>Mark Johnson</td>
+          <td>Area C</td>
+          <td>Lorem ipsum dolor sit amet</td>
+          <td>2024-06-01</td>
+          <td>2024-06-15</td>
+        </tr>
+  -->      <!-- Add more rows for additional candidates and elections -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Add Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vote Now Button</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .vote-button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .vote-button:hover {
+      background-color: #0069d9;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  {% if not user.is_staff  and not user.is_superuser%}
+  <div class="container">
+    <h1>Vote Now</h1>
+    <form action="vote" method="post">
+      <!-- Add your form fields here -->
+      <!-- Example: -->
+      <!-- <input type="hidden" name="candidateId" value="123"> -->
+
+      <button type="submit" class="vote-button">Vote Now</button>
+    </form>
+  </div>
+{% endif %}
+  <!-- Add Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+{% endblock %} 

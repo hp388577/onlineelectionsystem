@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
+  {% extends 'base.html' %}
+  {% block content %}
   <title>Participant and Candidate Form</title>
   <style>
     body {
@@ -55,75 +58,18 @@
 </head>
 <body>
   <div class="container">
-    <h2>Participant Form</h2>
-    <form method="POST" action='participant-create' enctype="multipart/form-data">
+    <h2>Candidate Login</h2>
+    <form method="POST" action='candidateLogin' enctype="multipart/form-data">
       {% csrf_token %}
 
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" required>
       </div>
 
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="area_name">Area Name:</label>
-        <input type="text" id="area_name" name="area_name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="documents_image">Documents Image:</label>
-        <input type="file" id="documents_image" name="documents_image" required accept="image/*">
-      </div>
-
-      <div class="form-group">
-        <label for="token">Token:</label>
-        <input type="text" id="token" name="token" required>
-      </div>
-
-      <div class="form-group">
-        <label for="is_verified">Is Verified:</label>
-        <input type="checkbox" id="is_verified" name="is_verified">
-      </div>
-
-      <input type="submit" class="submit-btn" value="Submit">
-    </form>
-
-    <h2>Candidate Form</h2>
-    <form method="POST" action='candidate-create' enctype="multipart/form-data">
-      {% csrf_token %}
-
-      <div class="form-group">
-        <label for="user">User:</label>
-        <input type="text" id="user" name="user" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="area_name">Area Name:</label>
-        <input type="text" id="area_name" name="area_name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="documents_image">Documents Image:</label>
-        <input type="file" id="documents_image" name="documents_image" required accept="image/*">
-      </div>
-
-      <div class="form-group">
-        <label for="symbol">Symbol:</label>
-        <input type="file" id="symbol" name="symbol" required accept="image/*">
-      </div>
-
-      <div class="form-group">
-        <label for="total_votes">Total Votes:</label>
-        <input type="number" id="total_votes" name="total_votes" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
       </div>
 
       <input type="submit" class="submit-btn" value="Submit">
@@ -131,3 +77,5 @@
   </div>
 </body>
 </html>
+
+{% endblock %} 
