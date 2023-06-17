@@ -1,6 +1,6 @@
 from django.db import models
 from User_Login.models import UserProfile
-from Candidate_Login.models import Candidate
+
 
 class Election(models.Model):
     election_name = models.CharField(max_length=100, primary_key=True)
@@ -29,11 +29,10 @@ class Area(models.Model):
 class Vote(models.Model):
     voter = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     election = models.ForeignKey(Election, on_delete=models.CASCADE)
-    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    candidate = models.ForeignKey('Candidate_Login.Candidate', on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('voter', 'election')
 
     def __str__(self):
-
         return f"{self.voter} voted for {self.candidate} in {self.election}"

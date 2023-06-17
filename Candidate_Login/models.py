@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from Election.models import Election
 
 class Participant(models.Model):
     name = models.CharField(max_length=100)
@@ -19,8 +20,10 @@ class Candidate(models.Model):
     email = models.EmailField()
     area_name = models.CharField(max_length=100)
     documents_image = models.ImageField(upload_to='documents/')
-    symbol=models.ImageField(upload_to='documents/')
+    symbol = models.ImageField(upload_to='documents/')
     total_votes = models.IntegerField(default=0)
+    election_name = models.ManyToManyField(Election)
 
     def __str__(self):
         return self.user.username
+

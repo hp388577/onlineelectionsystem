@@ -49,7 +49,8 @@
           <tr>
             <th scope="col">Candidate Name</th>
             <th scope="col">Area</th>
-            <th scope="col">Election</th>
+            <th scope="col">Vote to</th>
+
           </tr> 
         </thead>
         <tbody>
@@ -57,13 +58,23 @@
           <tr>
             <td>{{candidates.user}}</td>
             <td>{{candidates.area_name}}</td>
-            <td rowspan="{{candidates.election_name.count}}">
-              <ul>
-                {% for election_names in candidates.election_name.all %}
-                  <li>{{  election_names}}</li>
-                {% endfor %}
-              </ul>
-            </td>
+            {% for voter1 in voter %}
+            {% if candidates.area_name == voter1.area %}
+  
+          
+            <td><div class="container">
+                <h1>Vote Now</h1>
+                <form action="vote_to_candidate"  method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <!-- Add your form fields here -->
+                  <!-- Example: -->
+                  <!-- <input type="hidden" name="candidateId" value="123"> -->
+            
+                  <button type="submit" class="vote-button">Vote Now</button>
+                </form>
+              </div></td>
+              {% endif %}
+              {%endfor%}
           </tr>
           {%endfor%}
         </tbody>
@@ -71,7 +82,28 @@
     </div>
   </div>
   
+    
+
+<!--
+        <tr>
+          <td>Jane Smith</td>
+          <td>Area B</td>
+          <td>Lorem ipsum dolor sit amet</td>
+          <td>2023-05-01</td>
+          <td>2023-05-15</td>
+        </tr>
+        <tr>
+          <td>Election 2024</td>
+          <td>Mark Johnson</td>
+          <td>Area C</td>
+          <td>Lorem ipsum dolor sit amet</td>
+          <td>2024-06-01</td>
+          <td>2024-06-15</td>
+        </tr>
+  -->      <!-- Add more rows for additional candidates and elections -->
    
+
+  <!-- Add Bootstrap JS -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
@@ -100,17 +132,7 @@
 </head>
 <body>
   {% if not user.is_staff  and not user.is_superuser%}
-  <div class="container">
-    <h1>Vote Now</h1>
-    <form action="vote"  method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <!-- Add your form fields here -->
-      <!-- Example: -->
-      <!-- <input type="hidden" name="candidateId" value="123"> -->
-
-      <button type="submit" class="vote-button">Vote Now</button>
-    </form>
-  </div>
+  
 {% endif %}
   <!-- Add Bootstrap JS -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
